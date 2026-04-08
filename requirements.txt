@@ -1,8 +1,37 @@
-pyspark
+# Audio Processing
 librosa
-requests
-pandas
+soundfile
+scipy
 numpy
+
+# Spark
+pyspark
+pyarrow
+
+# Spotify API
+spotipy
+
+# Data Manipulation
+pandas
+scikit-learn
+
+# Visualization
 matplotlib
 seaborn
-pyarrow
+plotly
+
+# Web Scraping
+requests
+beautifulsoup4
+
+# Utilities
+python-dotenv
+tqdm
+
+# Machine Learning
+xgboost
+lightgbm
+
+# Development
+jupyter
+ipython

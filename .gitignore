@@ -1,1 +1,50 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables
 .env
+.env.local
+
+# Project Planning
+GAMEPLAN.md
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS Files
+.DS_Store
+Thumbs.db
+*~
+
+# Raw audio files
+data/audio_previews/
+
+# Generated Datasets & Models
+datasets/*.csv
+models/*.pkl
+results/
+
+# Logs
+logs/
+*.log
