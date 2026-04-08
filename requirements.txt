@@ -13,6 +13,7 @@ spotipy
 
 # Data Manipulation
 pandas
+polars
 scikit-learn
 
 # Visualization
