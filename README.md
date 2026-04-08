@@ -30,6 +30,13 @@ spotify-hit-predictor/
 └── GAMEPLAN.md                     # Project gameplan (in .gitignore)
 ```
 
+## Raw Data
+
+Raw data files are not tracked in git. Download them manually and place in `data/raw/`:
+
+- `hot100.csv` — [Billboard Hot 100 & more](https://www.kaggle.com/datasets/ludmin/billboard)
+- `dataset.csv` — [Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset)
+
 ## Setup Instructions
 
 ### 1. Install Dependencies
