@@ -1,0 +1,8 @@
+pyspark
+librosa
+requests
+pandas
+numpy
+matplotlib
+seaborn
+pyarrow
