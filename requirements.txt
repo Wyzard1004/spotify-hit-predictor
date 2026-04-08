@@ -1,0 +1,38 @@
+# Audio Processing
+librosa
+soundfile
+pydub
+scipy
+numpy
+
+# Spotify API
+spotipy
+
+# Data Manipulation
+pandas
+scikit-learn
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Web Scraping
+requests
+beautifulsoup4
+lxml
+
+# Utilities
+python-dotenv
+tqdm
+pillow
+
+# Machine Learning
+xgboost
+lightgbm
+
+# Development
+jupyter
+ipython
+black
+pytest
