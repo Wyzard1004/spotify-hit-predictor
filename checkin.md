@@ -29,15 +29,15 @@ t-SNE visualization of the data reveals:
 
 ### Feature Importance (Cohen's d Effect Sizes)
 Features ranked by discriminative power (hits vs non-hits):
-1. **Speechiness** (d=0.45) - Hits have lower speechiness (less talk, more music)
-2. **Loudness** (d=0.43) - Hits are louder (better-mastered production)
-3. **Danceability** (d=0.42) - Hits are more danceable (radio-friendly beat)
-4. **Liveness** (d=0.24) - Hits are less live (studio production preferred)
-5. **Acousticness** (d=0.19) - Hits are less acoustic (electronic/produced)
-6. **Tempo** (d=0.17) - Hits trend slightly faster
-7. **Energy** (d=-0.07) - No strong difference
-8. **Instrumentalness** (d=-0.22) - Hits have more vocals
-9. **Valence** (d=-0.27) - Non-hits are more positive/happy (counterintuitive!)
+speechiness         0.416
+loudness            0.398
+danceability        0.394
+liveness            0.171
+acousticness        0.155
+tempo               0.111
+energy             -0.099
+instrumentalness   -0.271
+valence            -0.392
 
 ## Modeling
 We implemented simple Logistic Regression as a baseline and found an AUC of 0.776 and F1 score of 0.799. 
