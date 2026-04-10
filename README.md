@@ -67,6 +67,99 @@ SPOTIFY_CLIENT_ID=your_client_id
 SPOTIFY_CLIENT_SECRET=your_secret
 ```
 
+## Jupyter Notebooks
+
+The project includes three comprehensive analysis notebooks in the `notebooks/` directory:
+
+### 1. `01_data_acquisition.ipynb` - Data Collection
+
+**Purpose:** Acquire and merge Billboard Hot 100 data with Spotify tracks dataset
+
+**What it covers:**
+- Load Billboard Hot 100 historical data (1958-present)
+- Load Spotify Tracks Dataset from Kaggle
+- Match tracks between Billboard and Spotify datasets
+- Create binary hit/non-hit labels based on Billboard charting
+- Handle missing values and duplicates
+- Generate `merged_labeled_dataset.csv` for downstream analysis
+
+**Key outputs:**
+- Merged dataset with 2,100+ tracks
+- Label distribution: 96.4% non-hits, 3.6% hits
+- Track metadata (artist, genre, release date)
+
+**Run time:** ~5 minutes
+
+### 2. `02_feature_extraction.ipynb` - Audio Feature Extraction
+
+**Purpose:** Extract 60+ audio DSP features from audio files
+
+**What it covers:**
+- Load audio previews (MP3, M4A, WAV formats)
+- Extract temporal features (tempo, beat strength)
+- Extract spectral features (spectral centroid, rolloff, contrast)
+- Extract timbral features (MFCC coefficients)
+- Extract energy features (RMS energy, zero crossing rate)
+- Extract harmonic features (chroma features)
+- Validate and normalize extracted features
+- Generate `audio_features.csv` with all tracks and features
+
+**Key outputs:**
+- Feature matrix: 2,100+ tracks × 60+ features
+- Quality validation metrics
+- Feature statistics and distributions
+
+**Run time:** ~10-30 minutes (depending on audio file count)
+
+### 3. `03_EDA_and_Baseline.ipynb` - Exploratory Data Analysis & Baseline Model
+
+**Purpose:** Analyze feature distributions, detect patterns, and train baseline model with PCA visualizations
+
+**What it covers:**
+- Load processed features dataset
+- Generate class distribution visualization (class imbalance analysis)
+- Create feature distribution plots (KDE plots by label)
+- Compute feature correlation heatmap
+- Perform Principal Component Analysis (PCA):
+  - Scree plot showing variance explained per component
+  - Biplot with feature loading vectors (red arrows)
+  - Cumulative variance analysis
+- t-SNE visualization for non-linear dimensionality reduction
+- PCA component loadings analysis (PC1, PC2, PC3)
+- Calculate effect sizes (Cohen's d) for feature importance
+- Train baseline Logistic Regression model with class weighting
+- Evaluate model performance (AUC, F1 score)
+
+**Key outputs:**
+- 9 comprehensive visualizations
+- PCA insights (variance explained, feature relationships)
+- Baseline model metrics (AUC: 0.776, F1: 0.799)
+- Feature importance rankings
+
+**Run time:** ~2 minutes (includes t-SNE computation)
+
+### How to Run the Notebooks
+
+```bash
+# Activate virtual environment
+cd /home/william/spotify-hit-predictor
+source .venv/bin/activate
+
+# Start Jupyter
+jupyter notebook notebooks/
+
+# Or run a specific notebook
+jupyter notebook notebooks/03_EDA_and_Baseline.ipynb
+```
+
+### Recommended Execution Order
+
+1. **First:** `01_data_acquisition.ipynb` (only if acquiring new data)
+2. **Second:** `02_feature_extraction.ipynb` (only if processing new audio)
+3. **Third:** `03_EDA_and_Baseline.ipynb` (main analysis - run every time)
+
+The processed datasets are already in `data/processed/features.csv`, so you can start with notebook 3 for immediate analysis.
+
 ## Module Overview
 
 ### `audio_processor.py` - Multi-Format Audio Loading
@@ -244,6 +337,41 @@ HOP_LENGTH = 512                 # STFT hop length
 MIN_AUDIO_DURATION = 10          # Minimum audio length
 MAX_AUDIO_DURATION = 60          # Maximum audio length
 ```
+
+## Exploratory Data Analysis with PCA
+
+The project includes comprehensive EDA with dimensionality reduction and feature analysis in `notebooks/03_EDA_and_Baseline.ipynb`:
+
+### Visualizations
+
+1. **Class Distribution** - Shows the imbalance between hits and non-hits
+2. **Feature Distributions** - KDE plots of each feature split by label
+3. **Correlation Heatmap** - Identifies feature correlations (e.g., energy & loudness)
+4. **PCA Scree Plot** - Displays variance explained by each principal component
+5. **PCA Biplot** - 2D visualization with feature loadings as red arrows
+   - **Red arrows** represent feature contribution vectors to PC1 and PC2
+   - Arrow direction shows which principal component the feature influences
+   - Arrow length indicates strength of contribution
+   - Features pointing in similar directions are correlated
+6. **t-SNE Visualization** - Non-linear dimensionality reduction for cluster detection
+7. **PCA Component Loadings** - Bar charts showing feature weights in PC1, PC2, PC3
+8. **Feature Importance (Cohen's d)** - Effect sizes quantifying feature discrimination power
+9. **Logistic Regression Coefficients** - Learned feature weights from baseline model
+
+### Why PCA?
+
+- **Dimensionality Reduction**: 9 audio features → 2-3 principal components capturing ~90% of variance
+- **Multicollinearity Detection**: Identifies correlated features (energy, loudness) that may compete in models
+- **Visualization**: Project high-dimensional data into 2D/3D for intuitive understanding
+- **Feature Engineering**: PC1, PC2, PC3 can replace original correlated features
+
+### Running the EDA Notebook
+
+```bash
+jupyter notebook notebooks/03_EDA_and_Baseline.ipynb
+```
+
+Expected runtime: ~2 minutes (t-SNE is computationally expensive)
 
 ## Running the Pipeline
 
