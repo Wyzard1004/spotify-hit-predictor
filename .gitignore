@@ -10,6 +10,8 @@ env/
 
 # Project Planning
 GAMEPLAN.md
+ANALYSIS_UPDATES.md
+QUICKSTART.md
 
 # Python Cache & Bytecode
 __pycache__/
