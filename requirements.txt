@@ -32,6 +32,16 @@ tqdm
 # Machine Learning
 xgboost
 lightgbm
+imbalanced-learn
+
+# SQL / Feature Store
+duckdb
+
+# Dashboard
+streamlit
+
+# Model Persistence
+joblib
 
 # Development
 jupyter
